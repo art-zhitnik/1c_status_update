@@ -68,7 +68,7 @@ else {
 
 $orderStatus = $_POST['status'];
 
-if (!ereg('^[A-Z]{1,2}$', $orderStatus)){
+if (preg_match('/^[A-Z]{1,2}$/', $orderStatus) === 1) {
     $USER->Logout();
     AddMessage2Log('ERROR: Wrong order status', "1c_status_update");
     die('Wrong order status');
